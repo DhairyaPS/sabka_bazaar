@@ -7,7 +7,7 @@ class HttpService {
   // Mimic the API call from local JSON Model
   static Future<List<Item>?> fetchProducts() async {
     var response =
-    await rootBundle.loadString('assets/json/home.json');
+    await rootBundle.loadString('assets/json/products.json');
     final data = await json.decode(response);
     ProductItem allData = ProductItem.fromJson(data);
     return allData.items;

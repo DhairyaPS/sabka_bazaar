@@ -120,20 +120,20 @@ class _ProductsScreenState extends State<ProductsScreen> {
                   ),
                 ),
                 Expanded(
-                  child: Obx(
-                      () {
-                        if (productController.isLoading.value) {
-                          return const Center(child: CircularProgressIndicator());
-                        } else {
-                          return ListView(
-                            children: const [
-                              ProductItem(),
-                            ],
-                          );
-                        }
-                      }
+                  child: Obx(() {
+                    if (productController.isLoading.value) {
+                      return const Center(child: CircularProgressIndicator());
+                    } else {
 
-                  ),
+                      print('ddddd = ($productController.getCurrentCountfor(dropdownValue))');
+                      return ListView.builder(
+                        itemCount: productController.getCurrentCountfor(dropdownValue),
+                        itemBuilder: (context, i) {
+                          return const ProductItem();
+                        },
+                      );
+                    }
+                  }),
                 )
               ],
             ),
@@ -143,10 +143,3 @@ class _ProductsScreenState extends State<ProductsScreen> {
     );
   }
 }
-/*
-ListView(
-                    children: const [
-                      ProductItem(),
-                    ],
-                  )
- */
