@@ -26,6 +26,12 @@ class ProductController extends GetxController {
       isLoading(false);
     }
   }
+  Product? getItemAt(int index) {
+    if (selectedCategory!.length > index) {
+      return selectedCategory![index];
+    }
+    return null;
+  }
 
   int getCurrentCountfor(String category) {
     SelectedCategory selectedCategory = SelectedCategory.foodAndVeg;

@@ -1,25 +1,3 @@
-// class ProductItem {
-//   String titleText;
-//   String flag;
-//   String detailedText;
-//   String buttonTitleText;
-//   String imageName;
-//   int quantity;
-//   int price;
-//   ProductItem(
-//       {required this.titleText,
-//         required this.flag,
-//         required this.detailedText,
-//         required this.buttonTitleText,
-//         required this.quantity,
-//         required this.price,
-//         required this.imageName});
-// }
-
-// To parse this JSON data, do
-//
-//     final productItem = productItemFromJson(jsonString);
-
 import 'dart:convert';
 
 ProductItem productItemFromJson(String str) => ProductItem.fromJson(json.decode(str));

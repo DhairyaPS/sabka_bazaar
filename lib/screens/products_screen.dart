@@ -6,6 +6,7 @@ import 'package:sabka_bazaar/utils/custom_colors.dart';
 import 'package:sabka_bazaar/widgets/screen_widgets/products_screen_widgets/product_list_item.dart';
 import 'package:get/get.dart';
 import '../controllers/products_controller.dart';
+import '../models/product_list_model.dart';
 
 class ProductsScreen extends StatefulWidget {
   const ProductsScreen({Key? key, required this.category}) : super(key: key);
@@ -124,12 +125,11 @@ class _ProductsScreenState extends State<ProductsScreen> {
                     if (productController.isLoading.value) {
                       return const Center(child: CircularProgressIndicator());
                     } else {
-
-                      print('ddddd = ($productController.getCurrentCountfor(dropdownValue))');
                       return ListView.builder(
                         itemCount: productController.getCurrentCountfor(dropdownValue),
                         itemBuilder: (context, i) {
-                          return const ProductItem();
+                          Product? currentObj = productController.getItemAt(i);
+                          return ProductItemTile(product: currentObj);
                         },
                       );
                     }

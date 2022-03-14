@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:sabka_bazaar/utils/constants/constants.dart';
 import 'package:sabka_bazaar/widgets/common_widgets/widgets.dart';
 
-class ProductItem extends StatelessWidget {
-  const ProductItem({Key? key}) : super(key: key);
+import '../../../models/product_list_model.dart';
 
+class ProductItemTile extends StatelessWidget {
+  const ProductItemTile({Key? key, required this.product}) : super(key: key);
+
+  final Product? product;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -13,8 +16,8 @@ class ProductItem extends StatelessWidget {
         children: [
           Container(
             alignment: Alignment.centerLeft,
-            child: const Text(
-              'Fresho Kiwi - Green 3 pcs',
+            child: Text(
+              product?.title ?? '',
             ),
           ),
           Row(
@@ -57,7 +60,7 @@ class ProductItem extends StatelessWidget {
                         right: 0.0,
                         child: Container(
                           alignment: Alignment.center,
-                          child: const Text('3 pc (270g 300g)'),
+                          child: Text(product?.pieces ?? ''),
                         ))
                   ],
                 ),
@@ -70,12 +73,12 @@ class ProductItem extends StatelessWidget {
                     const SizedBox(
                       height: 10.0,
                     ),
-                    const Padding(
-                      padding: EdgeInsets.all(2),
+                   Padding(
+                      padding: const EdgeInsets.all(2),
                       child: Text(
-                        'Kiwis are oval shaped with a brownish outer skin. The flesh is bright green and juicy with tiny edible black seeds.',
+                        product?.description ?? '',
                         maxLines: 5,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 12.0,
                         ),
                       ),
@@ -83,7 +86,7 @@ class ProductItem extends StatelessWidget {
                     const SizedBox(
                       height: 35.0,
                     ),
-                    longButtons('Buy Now @ MRP Rs.87', () {})
+                    longButtons('Buy Now @ MRP Rs.${product?.price ?? ''}', () {})
                   ],
                 ),
               )
